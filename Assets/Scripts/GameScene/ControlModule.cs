@@ -27,6 +27,8 @@ public class ControlModule : MonoBehaviour
 
     public Vector2 getAimingDirectionVec() { return aJoy.getDirectionVector(aJoy.gameObject.transform.position); }
     public Vector2 getMovementDirectionVec() { return mJoy.getDirectionVector(mJoy.gameObject.transform.position); }
+    public Quaternion GetAimingAngle() { return aJoy.GetDirectionAngle(); }
+    public Quaternion GetMovementAngle() { return mJoy.GetDirectionAngle(); }
     public bool IsAimingJoyActive() { return aJoy.GetIsActive(); }
     public bool IsMovementJoyActive() { return mJoy.GetIsActive(); }
 }

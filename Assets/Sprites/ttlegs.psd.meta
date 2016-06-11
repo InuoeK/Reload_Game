@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: 47c15584512cc384ca73fea7e328fcd0
+timeCreated: 1465609045
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ttlegs_0
+    21300002: ttlegs_1
+    21300004: ttlegs_2
+    21300006: ttlegs_3
+    21300008: ttlegs_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ttlegs_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 12
+        width: 15
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: ttlegs_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 70
+        width: 10
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: ttlegs_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 163
+        width: 61
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.5, y: 40.5}
+        - {x: -30.5, y: 18.5}
+        - {x: -30.5, y: -26.5}
+        - {x: -28.5, y: -37.5}
+        - {x: -16.5, y: -40.5}
+        - {x: 30.5, y: -40.5}
+        - {x: 30.5, y: 37.5}
+        - {x: 29.5, y: 40.5}
+      - - {x: -5.5, y: -26.5}
+        - {x: -19.5, y: 1.5}
+        - {x: 3.5, y: 27.5}
+        - {x: 18.5, y: -16.5}
+    - name: ttlegs_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 59
+        width: 44
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 30.5}
+        - {x: 22, y: 26.5}
+        - {x: 22, y: 38.5}
+        - {x: -15, y: 38.5}
+        - {x: -20, y: 33.5}
+        - {x: -22, y: 25.5}
+        - {x: -22, y: -31.5}
+        - {x: -13, y: -38.5}
+        - {x: 21, y: -38.5}
+        - {x: 22, y: -33.5}
+        - {x: 22, y: 25.5}
+        - {x: 19, y: 25.5}
+      - - {x: -7, y: -19.5}
+        - {x: -9, y: 25.5}
+        - {x: -1, y: 27.5}
+        - {x: 10, y: -23.5}
+    - name: ttlegs_4
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 60
+        width: 85
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0.5, y: 37}
+        - {x: -35.5, y: 37}
+        - {x: -37.5, y: 29}
+        - {x: -42.5, y: 10}
+        - {x: -42.5, y: -31}
+        - {x: -41.5, y: -35}
+        - {x: -9.5, y: -37}
+        - {x: 36.5, y: -37}
+        - {x: 42.5, y: -36}
+        - {x: 42.5, y: -11}
+        - {x: 41.5, y: -4}
+      - - {x: -29.5, y: -7}
+        - {x: -26.5, y: 5}
+        - {x: -6.5, y: 25}
+        - {x: -1.5, y: -9}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -103,8 +103,21 @@ public class JoystickScripts : MonoBehaviour
 
         Vector2 retVec = a_pos - resetPosition;
         retVec.Normalize();
-//        Debug.Log(retVec);
         return retVec;
+    }
+
+    public Quaternion GetDirectionAngle()
+    {
+        Vector2 joydir = getDirectionVector(this.transform.position);
+        Quaternion q = new Quaternion(0,0,0,0);
+        if (this.GetIsActive())
+        {
+            float atan = Mathf.Atan2(joydir.x, joydir.y);
+             q = Quaternion.AngleAxis(atan * -180/ Mathf.PI, new Vector3(0, 0, 1));
+        }
+
+        return q;
+
     }
 
     public bool GetIsActive()
