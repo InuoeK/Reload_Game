@@ -24,7 +24,7 @@ public class PlayerCombat : MonoBehaviour
         if (cm.IsAimingJoyActive())
         {
             GameObject t =
-            Instantiate(Resources.Load("proj"), GameObject.Find("Player").transform.position, Quaternion.identity) as GameObject;
+            Instantiate(Resources.Load("proj"), GameObject.Find("BulletComeFromHere").transform.position, Quaternion.identity) as GameObject;
 
             float atan = Mathf.Atan2(aimJoy.x, aimJoy.y);
             t.GetComponent<Rigidbody2D>().velocity = new Vector2(aimJoy.x * bulletSpeed, aimJoy.y * bulletSpeed);

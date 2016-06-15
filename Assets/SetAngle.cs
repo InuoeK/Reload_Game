@@ -4,6 +4,7 @@ using System.Collections;
 public class SetAngle : MonoBehaviour
 {
     ControlModule cm;
+    public float angle;
     // Use this for initialization
     void Start()
     {
@@ -15,9 +16,7 @@ public class SetAngle : MonoBehaviour
     {
         if (cm.IsAimingJoyActive())
         {
-            this.gameObject.transform.localRotation = cm.GetAimingAngle() * new Quaternion(0, 0, 1, 90f * 3.14f/180f) ;
-           
-
+             this.gameObject.transform.localRotation = cm.GetAimingAngle() * new Quaternion(0, 0, 1, angle * 3.14f/180f) ;
         }
     }
 }
