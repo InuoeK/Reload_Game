@@ -10,7 +10,7 @@ public class SpawnModule : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        SimpleSpawning();
+       // SimpleSpawning();
 	
 	}
 
