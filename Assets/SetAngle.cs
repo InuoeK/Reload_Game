@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SetAngle : MonoBehaviour
 {
+    public float modangle;
     ControlModule cm;
-    public float angle;
     // Use this for initialization
     void Start()
     {
@@ -16,7 +16,16 @@ public class SetAngle : MonoBehaviour
     {
         if (cm.IsAimingJoyActive())
         {
-             this.gameObject.transform.localRotation = cm.GetAimingAngle() * new Quaternion(0, 0, 1, angle * 3.14f/180f) ;
+            Vector2 cmAngle = cm.getAimingDirectionVec();
+            float angle = Mathf.Atan2(cmAngle.y, cmAngle.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            if (cm.getAimingDirectionVec().x < 0)
+            {
+                 angle = Mathf.Atan2(-cmAngle.y, cmAngle.x) * Mathf.Rad2Deg;
+                Debug.Log(transform.rotation.z);
+                transform.rotation = Quaternion.AngleAxis(angle + modangle, Vector3.forward);
+            }
         }
     }
 }

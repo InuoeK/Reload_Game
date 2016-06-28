@@ -1,0 +1,2 @@
+#Stat format: name, clipsize, maxammo, spreadfactor
+Sig552,30,150,0.15
