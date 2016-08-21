@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 37ef6737478e3f247ac4f2cd24e9d1b1
+timeCreated: 1469680309
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SigSpriteDelta_0
+    21300002: SigSpriteDelta_1
+    21300004: SigSpriteDelta_2
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SigSpriteDelta_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 609
+        width: 1207
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -209.5, y: 2.5}
+        - {x: -208.5, y: -1.5}
+        - {x: -198.5, y: -11.5}
+        - {x: -241.5, y: -112.5}
+        - {x: -260.5, y: -155.5}
+        - {x: -242.5, y: -162.5}
+        - {x: -225.5, y: -167.5}
+        - {x: -169.5, y: -166.5}
+        - {x: -162.5, y: -154.5}
+        - {x: -143.5, y: -103.5}
+        - {x: -128.5, y: -83.5}
+        - {x: -122.5, y: -91.5}
+        - {x: -102.5, y: -97.5}
+        - {x: -73.5, y: -100.5}
+        - {x: -38.5, y: -92.5}
+        - {x: -41.5, y: -88.5}
+        - {x: -44.5, y: -85.5}
+        - {x: -35.5, y: -77.5}
+        - {x: -39.5, y: -108.5}
+        - {x: -23.5, y: -118.5}
+        - {x: -17.5, y: -112.5}
+        - {x: -6.5, y: -71.5}
+        - {x: 38.5, y: -45.5}
+        - {x: 126.5, y: -44.5}
+        - {x: 142.5, y: -47.5}
+        - {x: 167.5, y: -30.5}
+        - {x: 195.5, y: -31.5}
+        - {x: 215.5, y: -24.5}
+        - {x: 297.5, y: -13.5}
+        - {x: 431.5, y: 7.5}
+        - {x: 463.5, y: 14.5}
+        - {x: 467.5, y: 28.5}
+        - {x: 497.5, y: 21.5}
+        - {x: 507.5, y: 24.5}
+        - {x: 598.5, y: 24.5}
+        - {x: 603.5, y: 33.5}
+        - {x: 603.5, y: 76.5}
+        - {x: 519.5, y: 74.5}
+        - {x: 472.5, y: 64.5}
+        - {x: 476.5, y: 145.5}
+        - {x: 467.5, y: 179.5}
+        - {x: 461.5, y: 180.5}
+        - {x: 418.5, y: 180.5}
+        - {x: 406.5, y: 136.5}
+        - {x: 424.5, y: 122.5}
+        - {x: 349.5, y: 121.5}
+        - {x: 272.5, y: 118.5}
+        - {x: 202.5, y: 117.5}
+        - {x: 198.5, y: 127.5}
+        - {x: 175.5, y: 121.5}
+        - {x: 45.5, y: 113.5}
+        - {x: -39.5, y: 126.5}
+        - {x: -41.5, y: 152.5}
+        - {x: -49.5, y: 162.5}
+        - {x: -84.5, y: 173.5}
+        - {x: -121.5, y: 179.5}
+        - {x: -131.5, y: 168.5}
+        - {x: -157.5, y: 151.5}
+        - {x: -157.5, y: 108.5}
+        - {x: -172.5, y: 106.5}
+        - {x: -229.5, y: 91.5}
+        - {x: -424.5, y: 89.5}
+        - {x: -476.5, y: 87.5}
+        - {x: -536.5, y: 83.5}
+        - {x: -587.5, y: 85.5}
+        - {x: -600.5, y: 77.5}
+        - {x: -590.5, y: -11.5}
+        - {x: -590.5, y: -80.5}
+        - {x: -599.5, y: -154.5}
+        - {x: -603.5, y: -160.5}
+        - {x: -603.5, y: -180.5}
+        - {x: -595.5, y: -180.5}
+        - {x: -532.5, y: -145.5}
+        - {x: -460.5, y: -112.5}
+        - {x: -328.5, y: -47.5}
+    - name: SigSpriteDelta_1
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 317
+        width: 212
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -106, y: 10}
+        - {x: -106, y: -17}
+        - {x: -2, y: -29}
+        - {x: 106, y: -29}
+        - {x: 106, y: 29}
+        - {x: 5, y: 29}
+        - {x: -103, y: 19}
+    - name: SigSpriteDelta_2
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 205
+        width: 133
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.5, y: 114.5}
+        - {x: -66.5, y: 104.5}
+        - {x: -66.5, y: -21.5}
+        - {x: -65.5, y: -26.5}
+        - {x: -24.5, y: -114.5}
+        - {x: 7.5, y: -114.5}
+        - {x: 64.5, y: -82.5}
+        - {x: 64.5, y: -54.5}
+        - {x: 30.5, y: 114.5}
+      - - {x: 61.5, y: -91.5}
+        - {x: 61.5, y: -94.5}
+        - {x: 63.5, y: -96.5}
+        - {x: 66.5, y: -96.5}
+        - {x: 66.5, y: -88.5}
+        - {x: 64.5, y: -88.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

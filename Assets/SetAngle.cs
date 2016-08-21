@@ -16,16 +16,18 @@ public class SetAngle : MonoBehaviour
     {
         if (cm.IsAimingJoyActive())
         {
+            cm.FlipSpriteOnAimingVec();
             Vector2 cmAngle = cm.getAimingDirectionVec();
             float angle = Mathf.Atan2(cmAngle.y, cmAngle.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             if (cm.getAimingDirectionVec().x < 0)
             {
-                 angle = Mathf.Atan2(-cmAngle.y, cmAngle.x) * Mathf.Rad2Deg;
-                Debug.Log(transform.rotation.z);
-                transform.rotation = Quaternion.AngleAxis(angle + modangle, Vector3.forward);
+                angle = Mathf.Atan2(cmAngle.y, cmAngle.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle - modangle, Vector3.forward);
             }
+
+            
         }
     }
 }

@@ -20,7 +20,7 @@ public class ControlModule : MonoBehaviour
     void Update()
     {
        UpdateAnimatorParameters();
-        FlipSpriteOnAimingVec();
+      // FlipSpriteOnAimingVec();
     }
 
     /*##########################################
@@ -41,14 +41,36 @@ public class ControlModule : MonoBehaviour
         am.isShooting = IsAimingJoyActive();
     }
 
-    void FlipSpriteOnAimingVec()
+   public void FlipSpriteOnAimingVec()
     {
-        GameObject player = GameObject.Find("PlayerAnimBodyGroup");
+        GameObject player = GameObject.Find("PlayerChibi");
         Vector3 plrScale = player.transform.localScale;
-        if ((getAimingDirectionVec().x < -0.1f && plrScale.x > 0.0f) || getAimingDirectionVec().x > -0.10f && plrScale.x < 0.0f)
+        if ((getAimingDirectionVec().x < -0.1f && plrScale.y > 0.0f) || getAimingDirectionVec().x > -0.10f && plrScale.y < 0.0f)
         {
-            plrScale.x *= -1;
+            // Old method, would break CCD
+            //plrScale.x *= -1;
+            //player.transform.localScale = plrScale;
+
+            // New method, instead of rotation on the x axis, the sprite is flipped along the y axis and then an offset rotation of 180 degrees is applied on the sprite
+            // This avoids any manipulation of the x axis, while achieving the same results (and also avoid breaking the IK system!)
+            plrScale.y *= -1;           
             player.transform.localScale = plrScale;
+
+
+            Vector3 tRotation = player.transform.rotation.eulerAngles;
+
+            if (getAimingDirectionVec().x > -0.09f)
+            {
+                Debug.Log("1");
+                tRotation.z = 0.0f;
+            }
+            else if (getAimingDirectionVec().x < -0.1f)
+            {
+                Debug.Log("2");
+                tRotation.z = 180.0f;
+
+            }
+            player.transform.localEulerAngles = tRotation;
 
         }
 
