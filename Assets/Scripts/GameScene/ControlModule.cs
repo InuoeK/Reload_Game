@@ -29,12 +29,12 @@ public class ControlModule : MonoBehaviour
      *##########################################
      */
 
-    public Vector2 getAimingDirectionVec() { return aJoy.getDirectionVector(aJoy.gameObject.transform.position); }
-    public Vector2 getMovementDirectionVec() { return mJoy.getDirectionVector(mJoy.gameObject.transform.position); }
+    public Vector2 getAimingDirectionVec() { return aJoy.GetDirectionVector(aJoy.gameObject.transform.position); }
+    public Vector2 getMovementDirectionVec() { return mJoy.GetDirectionVector(mJoy.gameObject.transform.position); }
     public Quaternion GetAimingAngle() { return aJoy.GetDirectionAngle(); }
     public Quaternion GetMovementAngle() { return mJoy.GetDirectionAngle(); }
-    public bool IsAimingJoyActive() { return aJoy.GetIsActive(); }
-    public bool IsMovementJoyActive() { return mJoy.GetIsActive(); }
+    public bool IsAimingJoyActive() { return aJoy.isActive; }
+    public bool IsMovementJoyActive() { return mJoy.isActive; }
 
     void UpdateAnimatorParameters()
     {
@@ -61,12 +61,10 @@ public class ControlModule : MonoBehaviour
 
             if (getAimingDirectionVec().x > -0.09f)
             {
-                Debug.Log("1");
                 tRotation.z = 0.0f;
             }
             else if (getAimingDirectionVec().x < -0.1f)
             {
-                Debug.Log("2");
                 tRotation.z = 180.0f;
 
             }
