@@ -12,7 +12,11 @@ public class CombatModule : MonoBehaviour
     void Start()
     {
         FileReader fr = new FileReader();
-        weaponList = fr.ReadWeaponStatsFromFile(Application.dataPath + "/WeaponData/Weapons.txt");
+        // weaponList = fr.ReadWeaponStatsFromFile(Application.persistentDataPath + "/Data/Weapons.txt");
+        // Debug.Log(Application.persistentDataPath);
+        TextAsset ta = Resources.Load<TextAsset>("WeaponData/Weapons");
+        Debug.Log("TextAsset contents: " + ta.text);
+        weaponList = fr.ReadWeaponStatsFromFile(ta);
         SpawnWeaponOnPlayer(weaponList[0].getName());
     }
 

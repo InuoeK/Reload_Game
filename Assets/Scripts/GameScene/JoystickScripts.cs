@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary> 
+/// Simple Joystick Script
+/// Written by Kevin Pang
+/// 
+/// This is a script that adds joystick control functionality to games. Its aim is to be lightweight and easy to use.
+/// 
+/// <para>To setup:</para>
+/// <para>1) Create a gameobject (preferably something that resembles a joystick)</para>
+/// <para>2) Attach this script to the gameobject</para>
+/// 3) Use the getters to get the joysticks to control your game!
+/// </summary>
 public class JoystickScripts : MonoBehaviour
 {
 
-    /* Simple Joystick Script
-     * Written by Kevin Pang
-     * 
-     * This is a script that adds joystick control functionality to games. Its aim is to be lightweight and easy to use.
-     * 
-     * To setup:
-     * 1) Create a gameobject (preferably something that resembles a joystick)
-     * 2) Attach this script to the gameobject
-     * 3) Use the getters to get the joysticks to control your game!
-     * 
-     * */
-
-
     GameObject visualJoystickObject;
 
-    // Maximum distance the joystick will move while tracking user input so it doesn't go all over the screen
+
+    /// <summary>
+    /// Maximum distance the joystick will move while tracking user input so it doesn't go all over the screen
+    /// </summary>
     public float boundaryRadius;
     public bool isActive = false;
 
@@ -27,13 +28,15 @@ public class JoystickScripts : MonoBehaviour
     private Touch stickTouch;
     private float sizeMult;
 
+    public float maxDistance;
+
     // Time between detecting doubletaps (in ms)
     private int tapTime;
     private bool firstTap;
     private bool secondTap;
     public bool SecondTap
     {
-        get;set;
+        get; set;
     }
 
 
@@ -59,33 +62,26 @@ public class JoystickScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkInputMobile();
-        //    getDirectionVector(visualJoystickObject.transform.position);
+        UpdateJoyPosition();
+      //  CheckDoubleTap();
     }
 
     private void CheckDoubleTap()
     {
         if (firstTap)
         {
-            Debug.Log("Double tap!");
+            Debug.Log(gameObject.name + " Double tap!");
             CancelInvoke();
             FirstTapExpired();
         }
     }
 
-    private void checkInputMobile()
-    {
-        UpdateJoyPosition();
-       // CheckDoubleTap();
-    }
-
-
     private bool SetTouchToStick()
     {
         foreach (Touch t in Input.touches)
         {
-            //          Vector3 wp = Camera.main.ScreenToWorldPoint(t.position);
-            //          Vector2 tPos = new Vector2(wp.x, wp.y);
+            // Vector3 wp = Camera.main.ScreenToWorldPoint(t.position);
+            // Vector2 tPos = new Vector2(wp.x, wp.y);
             Collider2D hit = Physics2D.OverlapPoint(t.position);
             if (hit && hit.gameObject.name == this.gameObject.name)
             {
@@ -93,7 +89,6 @@ public class JoystickScripts : MonoBehaviour
                 GetComponent<CircleCollider2D>().radius = sizeMult;
                 stickTouch = t;
                 isActive = true;
-                // Since is Active is already true, we can leverage this instead of implicitly declaring another bool
                 return isActive;
             }
         }
@@ -105,23 +100,27 @@ public class JoystickScripts : MonoBehaviour
         firstTap = false;
     }
 
-
-    // Check if the user has held onto the joystick and update the joystick's position accordingly, limiting the
-    // maximum movement as necessary
     private void UpdateJoyPosition()
     {
         if (SetTouchToStick())
             if (stickTouch.phase != TouchPhase.Ended)
             {
-                float tfloat = boundaryRadius / 4.0f;
-                if (Vector2.Distance(stickTouch.position, resetPosition) > tfloat)
+                float maxDistanceFromDefaultPosition = boundaryRadius / 2.0f;
+                //if (Vector2.Distance(stickTouch.position, resetPosition) > maxDistanceFromDefaultPosition)
+                if(Vector2.Distance(stickTouch.position, resetPosition) > maxDistance)
                 {
-                    Vector2 t = stickTouch.position - (GetDirectionVector(stickTouch.position) * tfloat);
-                    visualJoystickObject.transform.position = resetPosition + (stickTouch.position - t);
+
+                    if(gameObject.name == "AimingJoy")
+                    {
+                        Debug.Log("Aiming direction vector: " + GetDirectionVector());
+                        Debug.Log("Touch position: " + stickTouch.position);
+                    }
+                    visualJoystickObject.transform.position = (resetPosition + (GetDirectionVector() * maxDistance));
+
                 }
                 else { visualJoystickObject.transform.position = stickTouch.position; }
             }
-            else if (stickTouch.phase == TouchPhase.Ended)
+            else if (stickTouch.phase == TouchPhase.Ended )
             {
                 ResetJoystick();
                 CheckFirstTap();
@@ -132,34 +131,53 @@ public class JoystickScripts : MonoBehaviour
     {
         if (!firstTap)
         {
-            Debug.Log("First tap for: " + gameObject.name);
             firstTap = true;
             Invoke("FirstTapExpired", 0.400f);
         }
     }
 
-    // Returns the angle based on the direction vector between the current and default position of the joystick
-    public Quaternion GetDirectionAngle()
+
+    /// <summary>
+    /// Returns the Quaternion that the joystick is pointed at
+    /// </summary>
+    /// <returns></returns>
+    public Quaternion GetDirectionQuaternion()
     {
-        Vector2 joydir = GetDirectionVector(this.transform.position);
         Quaternion q = new Quaternion(0, 0, 0, 0);
         if (isActive)
         {
+            Vector2 joydir = GetDirectionVector();
             float atan = Mathf.Atan2(joydir.x, joydir.y);
             q = Quaternion.AngleAxis(atan * -180 / Mathf.PI, new Vector3(0, 0, 1));
         }
-
         return q;
-
     }
 
-    // Returns the direction vector between the joystick's default position and where it currently is
-    public Vector2 GetDirectionVector(Vector2 a_pos)
+
+    /// <summary>
+    /// Returns the Angle that the joystick is pointed at
+    /// </summary>
+    /// <returns></returns>
+    public float GetDirectionAngle()
     {
-        Vector2 t = new Vector2(visualJoystickObject.transform.position.x, visualJoystickObject.transform.position.y);
-        if (t == resetPosition) { return Vector2.zero; }
-        Vector2 retVec = a_pos - resetPosition;
+        Vector2 tVec = GetDirectionVector();
+        float tAngle = Mathf.Atan2(tVec.y, tVec.x) * Mathf.Rad2Deg;
+        return tAngle;
+    }
+
+    /// <summary>
+    /// Get the vector that represents the direction the joystick is pointed at
+    /// </summary>
+    /// <returns>Direction vector representing the direction the joystick is pointed at</returns>
+    public Vector2 GetDirectionVector()
+    {
+        //Vector2 t = new Vector2(visualJoystickObject.transform.position.x, visualJoystickObject.transform.position.y);
+        Vector2 t = new Vector2(stickTouch.position.x, stickTouch.position.y);
+
+        if (!isActive) { return Vector2.zero; }
+        Vector2 retVec = (Vector2)stickTouch.position - resetPosition;
         retVec.Normalize();
+
         return retVec;
     }
 

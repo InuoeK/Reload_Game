@@ -4,120 +4,125 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class SimpleCCD : MonoBehaviour
 {
-	public int iterations = 5;
-	
-	[Range(0.01f, 1)]
-	public float damping = 1;
+    public int iterations = 5;
 
-	public Transform target;
-	public Transform endTransform;
-	
-	public Node[] angleLimits = new Node[0];
+    [Range(0.01f, 1)]
+    public float damping = 1;
 
-	Dictionary<Transform, Node> nodeCache; 
-	[System.Serializable]
-	public class Node
-	{
-		public Transform Transform;
-		public float min;
-		public float max;
-	}
+    public Transform target;
+    public Transform endTransform;
 
-	void OnValidate()
-	{
-		// min & max has to be between 0 ... 360
-		foreach (var node in angleLimits)
-		{
-			node.min = Mathf.Clamp (node.min, 0, 360);
-			node.max = Mathf.Clamp (node.max, 0, 360);
-		}
-	}
+    public Node[] angleLimits = new Node[0];
 
-	void Start()
-	{
-		// Cache optimization
-		nodeCache = new Dictionary<Transform, Node>(angleLimits.Length);
-		foreach (var node in angleLimits)
-			if (!nodeCache.ContainsKey(node.Transform))
-				nodeCache.Add(node.Transform, node);
-	}
+    Dictionary<Transform, Node> nodeCache;
+    [System.Serializable]
+    public class Node
+    {
+        public Transform Transform;
+        public float min;
+        public float max;
+    }
 
-	void LateUpdate()
-	{
-		if (!Application.isPlaying)
-			Start();
+    void OnValidate()
+    {
+        // min & max has to be between 0 ... 360
+        foreach (var node in angleLimits)
+        {
+            node.min = Mathf.Clamp(node.min, 0, 360);
+            node.max = Mathf.Clamp(node.max, 0, 360);
+        }
+    }
 
-		if (target == null || endTransform == null)
-			return;
+    void Start()
+    {
+        // Cache optimization
+        nodeCache = new Dictionary<Transform, Node>(angleLimits.Length);
+        foreach (var node in angleLimits)
+            if (!nodeCache.ContainsKey(node.Transform))
+                nodeCache.Add(node.Transform, node);
+    }
 
-		int i = 0;
+    void LateUpdate()
+    {
+        if (!Application.isPlaying)
+            Start();
 
-		while (i < iterations)
-		{
-			CalculateIK ();
-			i++;
-		}
+        if (target == null || endTransform == null)
+            return;
 
-		endTransform.rotation = target.rotation;
-	}
+        int i = 0;
 
-	void CalculateIK()
-	{		
-		Transform node = endTransform.parent;
+        while (i < iterations)
+        {
+            CalculateIK();
+            i++;
+        }
 
-		while (true)
-		{
-			RotateTowardsTarget (node);
+        endTransform.rotation = target.rotation;
+    }
 
-			if (node == transform)
-				break;
+    void CalculateIK()
+    {
+        Transform node = endTransform.parent;
 
-			node = node.parent;
-		}
-	}
+        while (true)
+        {
+            RotateTowardsTarget(node);
 
-	void RotateTowardsTarget(Transform transform)
-	{		
-		Vector2 toTarget = target.position - transform.position;
-		Vector2 toEnd = endTransform.position - transform.position;
+            if (node == transform)
+                break;
 
-		// Calculate how much we should rotate to get to the target
-		float angle = SignedAngle(toEnd, toTarget);
+            node = node.parent;
+        }
+    }
 
-		// Flip sign if character is turned around
-		angle *= Mathf.Sign(transform.root.localScale.x);
+    void RotateTowardsTarget(Transform transform)
+    {
+        Vector2 toTarget = target.position - transform.position;
+        Vector2 toEnd = endTransform.position - transform.position;
 
-		// "Slows" down the IK solving
-		angle *= damping; 
+        // Calculate how much we should rotate to get to the target
+        float angle = SignedAngle(toEnd, toTarget);
 
-		// Wanted angle for rotation
-		angle = -(angle - transform.eulerAngles.z);
+        // "Slows" down the IK solving
+        angle *= damping;
 
-		// Take care of angle limits 
-		if (nodeCache.ContainsKey(transform))
-		{
-			// Clamp angle in local space
-			var node = nodeCache[transform];
-			float parentRotation = transform.parent ? transform.parent.eulerAngles.z : 0;
-			angle -= parentRotation;
-			angle = ClampAngle(angle, node.min, node.max);
-			angle += parentRotation;
-		}
+        // Wanted angle for rotation
+        angle = -(angle - transform.eulerAngles.z);
 
-		transform.rotation = Quaternion.Euler(0, 0, angle);
-	}
+        // Take care of angle limits 
+        var sign = Mathf.Sign(transform.root.localScale.x);
+        if (nodeCache.ContainsKey(transform))
+        {
+            // Clamp angle in local space
+            var node = nodeCache[transform];
+            float parentRotation = transform.parent ? transform.parent.eulerAngles.z : 0;
+            angle -= parentRotation;
+            angle = ClampAngle(angle, sign, node.min, node.max);
+            angle += parentRotation;
+        }
 
-	public static float SignedAngle (Vector3 a, Vector3 b)
-	{
-		float angle = Vector3.Angle (a, b);
-		float sign = Mathf.Sign (Vector3.Dot (Vector3.back, Vector3.Cross (a, b)));
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
 
-		return angle * sign;
-	}
+    public static float SignedAngle(Vector3 a, Vector3 b)
+    {
+        float angle = Vector3.Angle(a, b);
+        float sign = Mathf.Sign(Vector3.Dot(Vector3.back, Vector3.Cross(a, b)));
 
-	float ClampAngle (float angle, float min, float max)
-	{
-		angle = Mathf.Abs((angle % 360) + 360) % 360;
-		return Mathf.Clamp(angle, min, max);
-	}
+        return angle * sign;
+    }
+
+    float ClampAngle(float angle, float sign, float min, float max)
+    {
+        angle = Mathf.Abs((angle % 360) + 360) % 360;
+
+        if (sign < 0.0)
+        {
+            // Flip sign if character is turned around
+            return Mathf.Clamp(angle, 360 - max, 360 - min);
+        }
+
+        return Mathf.Clamp(angle, min, max);
+    }
 }
