@@ -7,10 +7,17 @@ public class BulletShellEffect : MonoBehaviour
     public GameObject shellSpawnLocation;
     public float shellSpawnDelay;
     private float t;
+
+    private DecalController decalController;
+
+   
+
+
     // Use this for initialization
     void Start()
     {
         aimingJoy = GameObject.Find("AimingJoy").GetComponent<JoystickScripts>();
+        decalController = GameObject.Find("GameController").GetComponent<DecalController>();
     }
 
     // Update is called once per frame
@@ -25,7 +32,9 @@ public class BulletShellEffect : MonoBehaviour
         {
             if (t <= 0.0f)
             {
-                GameObject tbs = Instantiate(Resources.Load("PlaceHolderShell"),  shellSpawnLocation.transform.position, Quaternion.identity ,null) as GameObject;
+                //GameObject tbs = Instantiate(Resources.Load("Shell_Rifle"),  shellSpawnLocation.transform.position, Quaternion.identity ,null) as GameObject;
+                decalController.spawnBulletShell(shellSpawnLocation);
+                t = shellSpawnDelay;
             }
             else if (t > 0.0f)
             {

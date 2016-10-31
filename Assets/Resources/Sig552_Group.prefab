@@ -533,8 +533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingEffect: {fileID: 1000012000113702}
-  firingDelay: 0
-  firingEffectResetTime: 0
+  firingDelay: 0.6
+  firingEffectResetTime: 0.3
 --- !u!114 &114000013817524952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -547,4 +547,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shellSpawnLocation: {fileID: 1000012018920522}
-  shellSpawnDelay: 0
+  shellSpawnDelay: 10
