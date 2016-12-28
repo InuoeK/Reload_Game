@@ -11,13 +11,8 @@ public class CombatModule : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        FileReader fr = new FileReader();
-        // weaponList = fr.ReadWeaponStatsFromFile(Application.persistentDataPath + "/Data/Weapons.txt");
-        // Debug.Log(Application.persistentDataPath);
-        TextAsset ta = Resources.Load<TextAsset>("WeaponData/Weapons");
-        Debug.Log("TextAsset contents: " + ta.text);
-        weaponList = fr.ReadWeaponStatsFromFile(ta);
-        SpawnWeaponOnPlayer(weaponList[0].getName());
+   
+        SpawnWeaponOnPlayer();
     }
 
     // Update is called once per frame
@@ -38,10 +33,10 @@ public class CombatModule : MonoBehaviour
         }
     }
 
-    private void SpawnWeaponOnPlayer(string weaponName)
+    private void SpawnWeaponOnPlayer()
     {
-        GameObject t = Instantiate(Resources.Load(weaponName + "_Group"), GameObject.Find("WeaponSpawnPosition").transform.position, Quaternion.identity) as GameObject;
-        t.name = weaponName + "_Group";
+        GameObject t = Instantiate(Resources.Load("Sig552_Container"), GameObject.Find("WeaponSpawnPosition").transform.position, Quaternion.identity) as GameObject;
+        t.name = "Sig552_Container";
         t.transform.parent = GameObject.Find("UpperTorso").transform;
 
         Debug.Log(gameObject.name);

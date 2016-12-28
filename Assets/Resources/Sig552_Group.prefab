@@ -102,8 +102,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 418606}
   - 95: {fileID: 9584542}
-  - 114: {fileID: 114000010492474014}
-  - 114: {fileID: 114000013817524952}
   m_Layer: 0
   m_Name: Sig552_Group
   m_TagString: Untagged
@@ -123,7 +121,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 418606}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!4 &418606
 Transform:
   m_ObjectHideFlags: 1
@@ -131,10 +129,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2638745, y: 0.5216695, z: 0}
+  m_LocalPosition: {x: 0.872756, y: -3.325005, z: 0}
   m_LocalScale: {x: 0.24359998, y: 0.24359998, z: 4.4193153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 4000012612312476}
   - {fileID: 489566}
   - {fileID: 431360}
   - {fileID: 476304}
@@ -157,7 +156,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 418606}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &463294
 Transform:
   m_ObjectHideFlags: 1
@@ -170,7 +169,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 418606}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!4 &475092
 Transform:
   m_ObjectHideFlags: 1
@@ -183,7 +182,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 418606}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!4 &476304
 Transform:
   m_ObjectHideFlags: 1
@@ -196,7 +195,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 418606}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &489566
 Transform:
   m_ObjectHideFlags: 1
@@ -209,7 +208,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 418606}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!95 &9584542
 Animator:
   serializedVersion: 3
@@ -353,6 +352,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000010512958264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012612312476}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011850525256
 GameObject:
   m_ObjectHideFlags: 1
@@ -412,6 +426,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000014127104318}
   m_RootOrder: 0
+--- !u!4 &4000012612312476
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010512958264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 418606}
+  m_RootOrder: 0
 --- !u!4 &4000013626826884
 Transform:
   m_ObjectHideFlags: 1
@@ -437,7 +464,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 418606}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &4000014127104318
 Transform:
   m_ObjectHideFlags: 1
@@ -452,7 +479,7 @@ Transform:
   - {fileID: 4000011824113190}
   - {fileID: 4000013626826884}
   m_Father: {fileID: 418606}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!108 &108000010559672328
 Light:
   m_ObjectHideFlags: 1
@@ -521,30 +548,3 @@ Light:
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114000010492474014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918b86b8aed48a54eba078af49fa5ae6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firingEffect: {fileID: 1000012000113702}
-  firingDelay: 0.6
-  firingEffectResetTime: 0.3
---- !u!114 &114000013817524952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 431ac9383c4a28f4c9bc4363eae89da9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shellSpawnLocation: {fileID: 1000012018920522}
-  shellSpawnDelay: 10
